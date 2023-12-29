@@ -38,6 +38,14 @@ function Board() {
           </div>
         </Link>
       ))}
+      
+      <div className="buttonarea">
+        <Link to="/write">
+            <button className="postwwritebutton">글 작성</button>
+        </Link>
+      </div>
+
+       
     </div>
   );
 }
