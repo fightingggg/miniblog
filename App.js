@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Board from './component/Board';
 import Write from './component/Write';
+import View from './component/View';
 
 function App() {
   const [posts, setPosts] = useState([
@@ -18,6 +19,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Board posts={posts} />} />
         <Route path="/write" element={<Write addPost={addPost} />} />
+        <Route path="/view/:postId" element={<View />} /> {/* 이 줄을 추가하세요 */}
       </Routes>
     </Router>
   );
