@@ -19,6 +19,7 @@ function View() {
     <div style={{ width: '80%', margin: '20px auto' }}>
       <h1>{post.title}</h1> {/* 게시글 제목 */}
       <h3>작성자: {post.author}</h3> {/* 게시글 작성자 */}
+      <p>게시글: {post.id}</p>
       <p style={{ fontSize: '18px' }}>{post.content}</p> {/* 게시글 내용 */}
       <div style={{ marginTop: '20px' }}>
         <button style={{ marginRight: '10px' }}>수정</button> {/* 수정 버튼 */}
