@@ -1,18 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Board.css';
+import './Board.css'; 
 
-function Board() {
-  // 게시글 데이터를 나타내는 예시 배열
-  const posts = [
-    { id: 1, category: '공지', title: '첫 번째 게시글', views: 100 },
-    { id: 2, category: '공지', title: '첫 번째 게시글', views: 100 },
-    { id: 3, category: '일반', title: '두 번째 게시글', views: 50 },
-    { id: 4, category: '일반', title: '두 번째 게시글', views: 50 },
-    { id: 5, category: '일반', title: '두 번째 게시글', views: 50 },
-
-    // 여기에 더 많은 게시글을 추가할 수 있습니다.
-  ];
+function Board({ posts }) {
+    // App.js에서 전달받은 posts 배열을 사용하여 게시글 목록을 렌더링
 
   return (
     <div className="board" style={{ width: '80%', margin: '0 auto' }}>
@@ -22,15 +13,9 @@ function Board() {
         <span>글 제목</span>
         <span>조회수</span>
       </div>
-      {posts.map(post => (
-        <Link to={`/view/${post.id}`} key={post.id} style={{ textDecoration: 'none', color: 'black' }}>
-          <div className="board-post" style={{ 
-            display: 'flex', 
-            justifyContent: 'space-between', 
-            padding: '10px', 
-            borderBottom: '1px solid #ddd', 
-            backgroundColor: post.category === '공지' ? '#f5f5dc' : 'white'  // 조건부 스타일링
-          }}>
+            {posts.map(post => (
+        <Link to={`/view/${post.id}`} key={post.id} className='board-link'>
+          <div className={`board-post ${post.category === '공지' ? 'notice' : ''}`}>
             <span>{post.id}</span>
             <span>{post.category}</span>
             <span>{post.title}</span>
@@ -38,6 +23,7 @@ function Board() {
           </div>
         </Link>
       ))}
+
       
       <div className="buttonarea">
         <Link to="/write">
