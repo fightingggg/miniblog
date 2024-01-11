@@ -1,14 +1,21 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 
-function Write() {
-  const [title, setTitle] = useState(''); // 제목 상태
-  const [content, setContent] = useState(''); // 내용 상태
-  const [category, setCategory] = useState('공지'); // 카테고리 상태
+function Write({ addPost }) {
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+  const [category, setCategory] = useState('공지');
+  const navigate = useNavigate(); // useNavigate 초기화
+
+    // 제출 버튼 클릭 시 실행되는 함수
 
   const handleSubmit = () => {
-    // 여기에 글 작성 로직을 추가할 수 있습니다.
-    console.log({ title, content, category });
+    addPost({ title, content, category }); // addPost 함수를 통해 새 게시글 추가
+     // 폼 초기화
+    setTitle('');
+    setContent('');
+    setCategory('공지');
+    navigate('/'); // 작성 후 Board 페이지로 이동
   };
 
   return (
