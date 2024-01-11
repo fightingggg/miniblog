@@ -15,15 +15,20 @@ function App() {  // 게시글 목록을 상태로 관리
   const addPost = (newPost) => {
     newPost.id = posts.length + 1; // 고유 ID 설정
     newPost.views = 0;             // 조회수 초기화
-    setPosts([...posts,newPost]); // 새 게시글을 상태에 추가
+    setPosts([...posts, newPost]); // 새 게시글을 상태에 추가
   };
 
+  //게시글삭제//
+  const deletePost = (postId) => {
+    setPosts(posts.filter(post => post.id !== postId));
+  };
+  //게시글삭제//
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Board posts={posts} />} />
         <Route path="/write" element={<Write addPost={addPost} />} />
-        <Route path="/view/:postId" element={<View posts={posts} />} />
+        <Route path="/view/:postId" element={<View posts={posts} deletePost={deletePost} />} />
       </Routes>
     </Router>
   );
